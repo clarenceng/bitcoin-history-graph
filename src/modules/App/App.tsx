@@ -1,32 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { Summary } from '../Summary'
 import { Chart } from '../Chart'
 import { Filter } from '../Filter'
 import { Heading, Grid } from '../../components'
-import './App.css';
-import { ICryptoItem } from '../../types';
+import './App.css'
+import { ICryptoItem, IFilters } from '../../types'
+import { compose } from '../../helpers'
 
-const getDays = (crypto: any, days: string = '30') => {
+const getDays = (days: string = '30') => (crypto: ICryptoItem[]): ICryptoItem[] => {
   return crypto.slice(crypto.length - parseInt(days), crypto.length)
 }
 
+const shortenBy = ({ days, plots }: IFilters) => (crypto: ICryptoItem[]): ICryptoItem[] => {
+  const amount = plots < parseInt(days) ? parseInt(days) / plots : 1
+  return crypto.filter((item: ICryptoItem, index: number) => index % amount === 0)
+}
+
 export const App = () => {
-  const [crypto, setCrypto] = useState([])
-  const [summary, setSummary] = useState({})
-  const [filter, setFilter] = useState({ days: '30', plots: 10 })
-  const [filteredCrypto, setFilteredCrypto] = useState([])
+  const [crypto, setCrypto] = useState<ICryptoItem[]>([])
+  const [summary, setSummary] = useState<ICryptoItem | {}>({})
+  const [filter, setFilter] = useState<IFilters>({ days: '30', plots: 10 })
+  const [filteredCrypto, setFilteredCrypto] = useState<ICryptoItem[]>([])
 
   useEffect(() => {
     fetch('https://cryto-86904.firebaseio.com/bitcoin.json')
-      .then(res => res.json().then(body => {
-        setCrypto(body)
-        setFilteredCrypto(getDays(body))
-        setSummary(body[body.length - 1])
+      .then(res => res.json().then(crypto => {
+        setCrypto(crypto)
+        setFilteredCrypto(getDays('30')(crypto))
+        setSummary(crypto[crypto.length - 1])
       }))
   }, [])
 
   useEffect(() => {
-    setFilteredCrypto(getDays(crypto, filter.days))
+    const filterData = compose(
+      getDays(filter.days),
+      shortenBy(filter)
+    )
+    setFilteredCrypto(filterData(crypto))
   }, [filter])
 
   const handleFilter = (newFilter: any) => {
@@ -39,7 +49,7 @@ export const App = () => {
   const handleChartClick = (label: string) => {
     const selectedSummary = crypto.find((data: ICryptoItem) => data.date === label) || {}
     setSummary(selectedSummary)
-  } 
+  }
 
   return (
     <main className='App' role='main'>
@@ -50,14 +60,11 @@ export const App = () => {
         </Grid.Col>
         <Grid.Col length={ 8 }>
           <Filter
-            days={ filter.days }
+            filter={ filter }
             refilter={ handleFilter }
-            plots={ filter.plots }
           />
           <Chart
             data={ filteredCrypto }
-            days={ filter.days }
-            plots={ filter.plots }
             onChartClick={ handleChartClick }
           />
         </Grid.Col>

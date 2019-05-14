@@ -1,5 +1,7 @@
 export type size = 'sm' | 'md' | 'lg'
+
 export type appearance = 'default' | 'success' | 'danger' | 'info' | 'warning'
+
 export interface ICryptoItem {
   activeAddresses: number
   'adjustedTxVolume(USD)': number
@@ -19,4 +21,9 @@ export interface ICryptoItem {
   txCount: number
   'txVolume(USD)': number
   [key: string]: string | number
+}
+
+export interface IFilters {
+  days: string
+  plots: number
 }

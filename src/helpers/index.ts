@@ -1,0 +1,1 @@
+export const compose = (...args: any[]) => (data: any) => args.reduce((acc, fn) => fn(acc), data)

@@ -1,10 +1,10 @@
 import React from 'react'
 import { TextInput, Select, Grid } from '../../components'
+import { IFilters } from '../../types'
 
 interface IFilter {
-  days: string
+  filter: IFilters
   refilter: (filter: any) => void
-  plots: number
 }
 
 const selectOptions = [{
@@ -21,14 +21,14 @@ const selectOptions = [{
   label: '5 years'
 }]
 
-export const Filter = ({ days, refilter, plots }: IFilter) => {
+export const Filter = ({ filter, refilter }: IFilter) => {
   return (
     <Grid.Row>
       <Grid.Col length={3}>
         <label>
           <p>Date:</p>
           <Select
-            value={ days }
+            value={ filter.days }
             onChange={ evt => refilter({ days: evt.target.value }) }
             options={ selectOptions }
           />
@@ -40,7 +40,7 @@ export const Filter = ({ days, refilter, plots }: IFilter) => {
           <p>Data Points:</p>
           <TextInput
             type='number'
-            value={ plots }
+            value={ filter.plots }
             onChange={ evt => refilter({ plots: parseInt(evt.target.value) }) }
           />
         </label>
