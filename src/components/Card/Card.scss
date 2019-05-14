@@ -1,0 +1,40 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$cardSizes: (
+  sm: var(--spacing-1),
+  md: var(--spacing-2),
+  lg: var(--spacing-3),
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-card {
+  display: inline-block;
+  padding: var(--spacing-2);
+  border: var(--border) var(--color-gray-400);
+  border-radius: var(--radius);
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. size
+ *
+ */
+
+/*----------  1. cols  ----------*/
+
+@each $size, $value in $cardSizes {
+  .c-card--#{$size} {
+    padding: #{$value};
+  }
+}

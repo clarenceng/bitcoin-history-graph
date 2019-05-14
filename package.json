@@ -1,5 +1,5 @@
 {
-  "name": "cryptocurrency",
+  "name": "cng-preboot",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,9 +7,12 @@
     "@types/node": "11.13.4",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.3",
+    "@types/recharts": "^1.1.16",
+    "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
+    "recharts": "^1.5.0",
     "typescript": "3.4.3"
   },
   "scripts": {
@@ -26,5 +29,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "classnames": "^2.2.6"
+  }
 }

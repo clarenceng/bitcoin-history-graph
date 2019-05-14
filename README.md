@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Preboot for me
+
+Basic components and folder structure to rapidly build and test ideas.
 
 ## Available Scripts
 

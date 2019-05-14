@@ -1,0 +1,42 @@
+@import '../../styles/utils.scss';
+
+/*=============================================
+=            variables                       =
+=============================================*/
+
+$TextInputSizes: (
+  sm: (var(--input-size-sm), var(--spacing-2)),
+  md: (var(--input-size-md), var(--spacing-3)),
+  lg: (var(--input-size-lg), var(--spacing-4)),
+);
+
+/*=============================================
+=            Block                           =
+=============================================*/
+
+.c-text-input {
+  display: inline-block;
+  border: var(--border);
+  border-radius: var(--radius);
+  font-size: var(--font-size-5);
+}
+
+/*=============================================
+=            Modifiers                       =
+=============================================*/
+
+/**
+ *
+ * 1. sizes
+ *
+ */
+
+/*----------  1. size  ----------*/
+
+@each $size, $value in $TextInputSizes {
+  .c-text-input--#{$size} {
+    height: nth($value, 1);
+    padding-left: nth($value, 2);
+    padding-right: nth($value, 2);
+  }
+}
