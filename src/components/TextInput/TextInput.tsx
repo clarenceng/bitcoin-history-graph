@@ -10,7 +10,8 @@ interface ITextInput extends React.InputHTMLAttributes<HTMLInputElement> {
 export const TextInput = ({
   className,
   type = 'string',
-  inputSize = 'md'
+  inputSize = 'md',
+  ...props
 }: ITextInput ) => {
   const styles = classnames(
     'c-text-input',
@@ -18,6 +19,6 @@ export const TextInput = ({
     className
   )
   return (
-    <input type={ type } className={ styles }/>
+    <input type={ type } className={ styles } {...props} />
   )
 }

@@ -4,7 +4,7 @@
 =            variables                       =
 =============================================*/
 
-$TextInputSizes: (
+$InputSizes: (
   sm: (var(--input-size-sm), var(--spacing-2)),
   md: (var(--input-size-md), var(--spacing-3)),
   lg: (var(--input-size-lg), var(--spacing-4)),
@@ -14,12 +14,31 @@ $TextInputSizes: (
 =            Block                           =
 =============================================*/
 
-.c-text-input {
+.c-select-container {
+  position: relative;
   display: inline-block;
+}
+
+.c-select {
+  display: inline-block;
+  background-color: var(--color-white);
   border: var(--border);
   border-radius: var(--radius);
   font-size: var(--font-size-5);
+  appearance: none;
   width: 100%;
+}
+
+.c-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--color-gray-600);
+  position: absolute;
+  top: 17px;
+  right: 14px;
+  pointer-events: none;
 }
 
 /*=============================================
@@ -34,10 +53,10 @@ $TextInputSizes: (
 
 /*----------  1. size  ----------*/
 
-@each $size, $value in $TextInputSizes {
-  .c-text-input--#{$size} {
+@each $size, $value in $InputSizes {
+  .c-select--#{$size} {
     height: nth($value, 1);
     padding-left: nth($value, 2);
-    padding-right: nth($value, 2);
+    padding-right: calc(#{nth($value, 2)} + 32px);
   }
 }

@@ -27,8 +27,8 @@ export const Chart = ({ data, days, plots, onChartClick }: IChart) => {
         width={600}
         height={300}
         data={a}
-        onClick={(evt) => onChartClick(evt.activeLabel)}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        onClick={(evt) => evt ? onChartClick(evt.activeLabel) : null}
+        margin={{ top: 30, right: 0, left: 0, bottom: 30 }}
       >
         <Line type="monotone" dataKey="uv" stroke="#8884d8" />
         <CartesianGrid stroke="#ccc"  strokeDasharray="3 3"/>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { TextInput, Select, Grid } from '../../components'
 
 interface IFilter {
   days: string
@@ -6,25 +7,44 @@ interface IFilter {
   plots: number
 }
 
+const selectOptions = [{
+  value: '30',
+  label: 'last month'
+}, {
+  value: '180',
+  label: '6 months'
+}, {
+  value: '360',
+  label: '1 year'
+}, {
+  value: '1800',
+  label: '5 years'
+}]
+
 export const Filter = ({ days, refilter, plots }: IFilter) => {
   return (
-    <div>
-      <div>
-        <select value={ days } onChange={ evt => refilter({ days: evt.target.value }) }>
-          <option value={ '30' }>last month</option>
-          <option value={ '180' }>6 months</option>
-          <option value={ '360' }>1 year </option>
-          <option value={ '1800' }>5 years</option>
-        </select>
-      </div>
+    <Grid.Row>
+      <Grid.Col length={3}>
+        <label>
+          <p>Date:</p>
+          <Select
+            value={ days }
+            onChange={ evt => refilter({ days: evt.target.value }) }
+            options={ selectOptions }
+          />
+        </label>
+      </Grid.Col>
 
-      <div>
-        <input
-          type='number'
-          value={ plots }
-          onChange={ evt => refilter({ plots: parseInt(evt.target.value) }) }
-        />
-      </div>
-    </div>
+      <Grid.Col length={3}>
+        <label>
+          <p>Data Points:</p>
+          <TextInput
+            type='number'
+            value={ plots }
+            onChange={ evt => refilter({ plots: parseInt(evt.target.value) }) }
+          />
+        </label>
+      </Grid.Col>
+    </Grid.Row>
   )
 }

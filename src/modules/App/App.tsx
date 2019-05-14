@@ -21,6 +21,7 @@ export const App = () => {
       .then(res => res.json().then(body => {
         setCrypto(body)
         setFilteredCrypto(getDays(body))
+        setSummary(body[body.length - 1])
       }))
   }, [])
 
@@ -29,7 +30,6 @@ export const App = () => {
   }, [filter])
 
   const handleFilter = (newFilter: any) => {
-    console.log('nsdfs', newFilter)
     setFilter({
       ...filter,
       ...newFilter
