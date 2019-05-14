@@ -1,4 +1,5 @@
 import React from 'react'
+import './Summary.scss'
 
 interface ISummary {
   data: any
@@ -12,8 +13,8 @@ export const Summary = ({ data }: ISummary) => {
     <section>
       { summaryKeys.length 
         ? summaryKeys.map((key: string, index: number) => (
-            <div key={ index }>
-              <span>{ key }: </span>
+            <div  className='summary' key={ index }>
+              <span className='summary__label'>{ key }: </span>
               <span>{ key.indexOf('USD') > 0 ? USD.format(data[key]) : data[key] }</span>
             </div>
           ))

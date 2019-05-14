@@ -32,9 +32,9 @@ $InputSizes: (
 .c-select-arrow {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid var(--color-gray-600);
+  border-left: var(--spacing-2) solid transparent;
+  border-right: var(--spacing-2) solid transparent;
+  border-top: var(--spacing-2) solid var(--color-gray-600);
   position: absolute;
   top: 17px;
   right: 14px;

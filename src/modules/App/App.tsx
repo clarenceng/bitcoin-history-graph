@@ -52,9 +52,9 @@ export const App = () => {
   }
 
   return (
-    <main className='App' role='main'>
-      <Heading as='h1' displayAs='h1'>Crypto Graph</Heading>
-      <Grid.Row>
+    <main className='app' role='main'>
+      <Heading as='h1' displayAs='h1'>Bitcoin History Graph</Heading>
+      <Grid.Row className='app__body'>
         <Grid.Col length={ 4 }>
           <Summary data={ summary } />
         </Grid.Col>
