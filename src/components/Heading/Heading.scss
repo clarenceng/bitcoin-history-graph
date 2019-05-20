@@ -5,12 +5,12 @@
 =============================================*/
 
 $HeadingTypes: (
-  h1: 40px,
-  h2: 36px,
-  h3: 32px,
-  h4: 28px,
-  h5: 24px,
-  h6: 20px
+  h1: 24px,
+  h2: 20px,
+  h3: 18px,
+  h4: 16px,
+  h5: 14px,
+  h6: 12px
 );
 
 /*=============================================
@@ -36,6 +36,7 @@ $HeadingTypes: (
 @each $type, $value in $HeadingTypes {
   .c-heading--#{$type} {
     font-size: #{$value};
-    margin-bottom: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
+    margin-top: 0;
   }
 }

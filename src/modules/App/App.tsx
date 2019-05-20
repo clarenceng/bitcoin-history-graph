@@ -53,20 +53,23 @@ export const App = () => {
 
   return (
     <main className='app' role='main'>
-      <Heading as='h1' displayAs='h1'>Bitcoin History Graph</Heading>
+      <Heading as='h1' displayAs='h1'>Bitcoin History</Heading>
       <Grid.Row className='app__body'>
-        <Grid.Col length={ 4 }>
+        <Grid.Col length={ 6 }>
           <Summary data={ summary } />
         </Grid.Col>
-        <Grid.Col length={ 8 }>
-          <Filter
-            filter={ filter }
-            refilter={ handleFilter }
-          />
-          <Chart
-            data={ filteredCrypto }
-            onChartClick={ handleChartClick }
-          />
+        <Grid.Col length={ 6 }>
+          <section className='graph-container'>
+            <Heading as='h2' displayAs='h2'>Price By Date Graph</Heading>
+            <Filter
+              filter={ filter }
+              refilter={ handleFilter }
+            />
+            <Chart
+              data={ filteredCrypto }
+              onChartClick={ handleChartClick }
+            />
+          </section>
         </Grid.Col>
       </Grid.Row>
     </main>

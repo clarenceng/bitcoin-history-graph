@@ -1,8 +1,15 @@
 .app {
   display: block;
+  padding: var(--spacing-3);
+  background-color: #f3f3f3;
 }
 
 .app__body {
-  background-color: #f9f9f9;
+  padding: var(--spacing-3);
+}
+
+.graph-container {
+  border-radius: 4px;
+  background-color: white;
   padding: var(--spacing-3);
 }

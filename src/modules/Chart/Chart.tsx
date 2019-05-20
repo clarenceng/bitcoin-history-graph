@@ -19,7 +19,7 @@ export const Chart = ({ data, onChartClick }: IChart) => {
   return (
     <div>
       <LineChart
-        width={ 600 }
+        width={ 500 }
         height={ 300 }
         data={ formattedData }
         onClick={ (evt) => evt ? onChartClick(evt.activeLabel) : null }
